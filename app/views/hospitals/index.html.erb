@@ -1,0 +1,40 @@
+<%= link_to 'Add a hospital account', :action => "add_new_account" %>
+<h1>Listing hospitals</h1>
+
+<table class="hospitals_accounts_list">
+  <% @hospital_accounts.each do |account| %>
+    <tr>
+      <td>
+        <table class="entity_title_bar" >
+          <tr>
+            <td><h3 class ="entity_title"><%= link_to "#{account.name}", :action => "show", :controller => "accounts", :id => account.id   %></h3></td>
+            <td align="right"><%= link_to 'Add hospital', :action => "new", :account_id => account.id %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="hospitals_list">
+        <div>
+          <% @hospitals[account.id].each do |hospital| %>
+            <%  unless hospital.nil? %>
+              <li><%= link_to "#{hospital.name}", :action => "show", :id =>hospital.id  %></li>
+              <div class="hospital_address" id="hospital_address">
+                <%=  hospital.address %>   <br/>
+                <%=  hospital.city %>,  
+                <%=  hospital.state %> <br />
+                <%=  hospital.country %>
+                <%=  hospital.zipcode %> &nbsp;&nbsp; <%= link_to 'locate on map' %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+

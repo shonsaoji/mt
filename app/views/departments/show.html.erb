@@ -1,0 +1,49 @@
+
+<table border="1" class="hospital_profile" id="hospital_profile">
+  <tr>
+    <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+  </tr>
+  <tr>
+    <td class="left_column">
+      <table border="1">
+        <tr><td><%= link_to "Home", :action => "show", :controller => "hospitals", :id => @hospital.id %></td></tr>
+        <tr><td><a href="#">Doctors</a></td></tr>
+        <tr><td><%= link_to "Departments" , :action => 'index', :controller => 'departments', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><%= link_to "Procedures" , :action => 'index', :controller => 'medical_procedures', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><a href="#">Photos</a></td></tr>
+        <tr><td><a href="#">Videos</a></td></tr>
+        <tr><td><a href="#">Reviews</a></td></tr>
+      </table>
+    </td>
+    <td >
+      <table border="1">
+        <tr>
+          <td><h3><%= @department.name %></h3></td>
+        </tr>
+      </table>
+      <table border ="1">
+        <tr class ="internal_tabs">
+          <td><%= link_to "Home", :action => "show", :controller => "departments", :id =>@department.id %></td>
+          <td><%= link_to "Doctors" %></td>
+          <td><%= link_to "Procedures", :action => "department_procedures", :controller => "medical_procedures", :department => @department.id %></td>
+          <td><%= link_to "Facility" %></td>
+          <td><%= link_to "Photos" %></td>
+          <td><%= link_to "Videos" %></td>		  
+        </tr>
+      </table>
+      <table border=1>
+        <tr>
+          <td><%= @department.description%></td>		  
+        </tr>
+		<tr>
+			<td>Contact Details</td>
+		</tr>
+      </table>
+    </td>
+    <td class="right_column"">
+      <table border="1">
+        <tr><td><b onclick="" style="display: inline">Department Pride</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>

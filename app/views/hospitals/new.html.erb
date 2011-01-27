@@ -1,0 +1,59 @@
+<h1>New hospital</h1>
+<%= form_tag :action => "create", :account_id => @account_id %>
+
+<table class="form_table">
+  <tr>
+    <td>
+      Name of Hospital
+    </td>
+    <td colspan="5">
+      <%= text_field_tag 'hospital_name' %>
+    </td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td><%= text_field_tag 'address' %></td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td><%= text_field_tag 'city' %></td>
+    <td>State</td>
+    <td><%= text_field_tag 'state' %></td>
+  </tr>
+  <tr>
+    <td>Country</td>
+    <td><%= text_field_tag 'country' %></td>
+    <td>Zipcode</td>
+    <td><%= text_field_tag 'zipcode' %></td>
+  </tr>
+</table>
+<div>
+  <h3 class ="entity_title">Admin Details</h3>
+<table class="form_table">
+  <tr>
+    <td>Full Name </td>
+    <td><%= text_field_tag 'admin_name' %></td>
+  </tr>
+  <tr>
+    <td>Email </td>
+    <td><%= text_field_tag 'email' %></td>
+  </tr>
+  <tr>
+    <td>User Name</td>
+    <td><%= text_field_tag 'user_name' %></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><%= password_field_tag 'password' %></td>
+  </tr>
+  <tr>
+    <td>Confirm Password</td>
+    <td><%= password_field_tag 'password_confirmation' %></td>
+  </tr>
+</table>
+</div>
+  <p>
+    <%= submit_tag 'Create' %>
+  </p>
+
+<%= link_to 'Back', hospitals_path %>

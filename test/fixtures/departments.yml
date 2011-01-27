@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+oncology:
+  id: 1
+  name: Oncology
+  description: Cancer research and treatment.
+  hospital_id: 1
+  
+opthal:
+  id: 2
+  name: Opthalmology
+  description: Specializing in various eye treatments like laser surgery, cataract etc...
+  hospital_id: 1
+  
+Ayurveda:
+  id: 3
+  name: Ayurveda
+  description: Ancient Indian treatment solely relying on the use of herbs found/grown naturally.
+  hospital_id: 1

@@ -1,0 +1,12 @@
+<h1>Editing medical_procedure</h1>
+
+<% form_for(@medical_procedure) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @medical_procedure %> |
+<%= link_to 'Back', medical_procedures_path %>

@@ -1,0 +1,51 @@
+<table border="1" class="hospital_profile" id="hospital_profile">
+  <tr>
+    <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+  </tr>
+  <tr>
+    <td class="left_column">
+      <table border="1">
+        <tr><td><%= link_to "Home", :action => "show", :controller => "hospitals", :id => @hospital.id %></td></tr>
+        <tr><td><a href="#">Doctors</a></td></tr>
+        <tr><td><%= link_to "Departments" , :action => 'index', :controller => 'departments', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><%= link_to "Procedures" , :action => 'index', :controller => 'medical_procedures', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><a href="#">Photos</a></td></tr>
+        <tr><td><a href="#">Videos</a></td></tr>
+        <tr><td><a href="#">Reviews</a></td></tr>
+      </table>
+    </td>
+    <td >
+      <table border="1">
+        <tr>
+          <td><h3>Listing Medical Procedures</h3></td>
+          <% if hospital_admin?(@hospital.id.to_i) %>
+          <td><p><%= link_to 'Add procedure', :action => "new", :controller => "medical_procedures", :hospital_id => @hospital.id  %></p></td>
+          <%  end %>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <table border="1">
+              <% if @medical_procedures.nil? or @medical_procedures.empty? %>
+                <tr><td><h5 class = "notice">No medical procedures added</h5></td></tr>
+              <%  else %>
+                <% @medical_procedures.each do |procedure| %>
+                  <tr>
+                    <td><%= link_to "#{procedure.name}", procedure %></td>
+                    <td><%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="right_column"">
+      <table border="1">
+        <tr><td height="100px"><b onclick="" style="display: inline">Procedure Reviews</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>

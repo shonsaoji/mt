@@ -1,0 +1,59 @@
+<h1>Admin Page</h1>
+<table border="2">
+  
+  <tr class="Titles">
+
+    <th>
+      <div id="site_admin">
+        <h3>Site Administrators</h3>
+      </div>
+    </th>
+    <th>
+      <div id="hospitals">
+        <h3>Hospitals</h3>
+      </div>
+    </th>
+    <th>
+      <div id="travel_agents">
+        <h3>Travel Agents</h3>
+      </div>
+    </th>
+
+  </tr>
+
+  <tr class="list">
+
+    <td id="site_admin_list">
+
+    </td>
+
+    <td id="hospital_list">
+
+    </td>
+
+    <td id="travel_agent_list">
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td id="add_new_site_admin">
+      <div   id="add_new_hospital">
+              <%= link_to "Add Site Admin", :action => "add_site_admin" %>
+      </div>
+    </td>    
+    <td>
+      <div   id="add_new_hospital">
+        <%= link_to "Add Hospital", :action => "add_hospital" %>
+      </div>
+    </td>
+    <td>
+      <div   id="add_new_travel_agent">
+        <%= link_to "Add Travel Agent", :action => "add_travel_agent" %>
+      </div>
+    </td>
+
+  </tr>
+  </table>

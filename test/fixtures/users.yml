@@ -1,0 +1,85 @@
+#      t.column :user_name,                     :string, :limit => 40
+#      t.column :name,                      :string, :limit => 100, :default => '', :null => true
+#      t.column :email,                     :string, :limit => 100
+#      t.column :crypted_password,          :string, :limit => 40
+#      t.column :salt,                      :string, :limit => 40
+#      t.column :created_at,                :datetime
+#      t.column :updated_at,                :datetime
+#      t.column :remember_token,            :string, :limit => 40
+#      t.column :remember_token_expires_at, :datetime
+#
+#      # extraa columns after restful authentication
+#      t.integer :age
+#      t.string   :address
+#      t.string :city
+#      t.string :state
+#      t.string :country
+#      t.string :zipcode
+#
+#      # extra columns added to identify admin or account
+#      t.integer :admin
+#      t.integer :account_id
+
+
+Max:
+  id:                        127
+  user_name:   super
+  name: shon saoji
+  email:                     shon.saoji@gmail.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          a70be2dcca1b5a9346385487ab95ea7cbbd875a4 # 'monkey'
+  created_at:                <%= DateTime.now  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_datetime %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  admin: 1                              #super user
+  account_id: 1
+
+Kev:
+  id:                        1
+  user_name:   kevin
+  name: Kevin
+  email:                     kev@medtours.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          a70be2dcca1b5a9346385487ab95ea7cbbd875a4 # 'monkey'
+  created_at:                <%= DateTime.now  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_datetime %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  admin: 2      # account_admin
+  account_id: 2
+
+Kirsten:
+  id:                        2
+  user_name:   kirsten
+  name: Kirsten
+  email:                     kirs@medtours.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          a70be2dcca1b5a9346385487ab95ea7cbbd875a4 # 'monkey'
+  created_at:                <%= DateTime.now  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_datetime %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  admin: 3      # account_admin
+  account_id: 2
+
+Bob:
+  id:                        3
+  user_name:   Bob
+  name: bob
+  email:                     bob@medtours.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          a70be2dcca1b5a9346385487ab95ea7cbbd875a4 # 'monkey'
+  created_at:                <%= DateTime.now  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_datetime %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  admin: 2      # account_admin
+  account_id: 3
+#
+#
+#old_password_holder:
+#  id:                        3
+#  user_name:                     old_password_holder
+#  email:                     salty_dog@example.com
+#  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+#  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+#  created_at:                <%= 1.days.ago.to_s :db %>
+#
+#

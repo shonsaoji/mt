@@ -1,0 +1,51 @@
+<table border="1" class="hospital_profile" id="hospital_profile">
+  <tr>
+    <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+  </tr>
+  <tr>
+    <td class="left_column">
+      <table border="1">
+        <tr><td><%= link_to "Home", :action => "show", :controller => "hospitals", :id => @hospital.id %></td></tr>
+        <tr><td><a href="#">Doctors</a></td></tr>
+        <tr><td><%= link_to "Departments" , :action => 'index', :controller => 'departments', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><%= link_to "Procedures" , :action => 'index', :controller => 'medical_procedures', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><a href="#">Photos</a></td></tr>
+        <tr><td><a href="#">Videos</a></td></tr>
+        <tr><td><a href="#">Reviews</a></td></tr>
+      </table>
+    </td>
+    <td >
+      <table border="1">
+        <tr>
+          <td><h3>Listing departments</h3></td>
+          <% if hospital_admin?(@hospital.id.to_i) %>
+          <td><p><%= link_to 'Add department', :action => "new", :controller => "departments", :hospital_id => @hospital.id  %></p></td>
+          <%  end %>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <table border="1">
+              <% if @departments.nil? or @departments.empty? %>
+                <tr><td><h5 class = "notice">No Departments added</h5></td></tr>
+              <%  else %>
+                <% @departments.each do |department| %>
+                  <tr>
+                    <td><%= link_to "#{department.name}", department %></td>
+                    <td><%= link_to 'Delete', department, :confirm => 'Are you sure?', :method => :delete %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="right_column"">
+      <table border="1">
+        <tr><td height="100px"><b onclick="" style="display: inline">Hospital Accolades</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>

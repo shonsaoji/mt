@@ -1,0 +1,37 @@
+<table border="1" class="hospital_profile" id="hospital_profile">
+  <tr>
+    <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+  </tr>
+  <tr>
+    <td class="left_column">
+      <table border="1">
+        <tr><td><a href="#">Home</a></td></tr>
+        <tr><td><a href="#">Doctors</a></td></tr>
+        <tr><td><%= link_to "Departments" , :action => 'index', :controller => 'departments', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><%= link_to "Procedures" , :action => 'index', :controller => 'medical_procedures', :hospital_id => @hospital.id%></td></tr>        
+        <tr><td><a href="#">Photos</a></td></tr>
+        <tr><td><a href="#">Videos</a></td></tr>
+        <tr><td><a href="#">Reviews</a></td></tr>        
+      </table>
+    </td>
+    <td >
+      <table border="1">
+        <tr><td><h3>About US </h3></td></tr>
+        <tr><td><%= @hospital.description %></td></tr>
+      </table>
+      <table border="1">
+        <tr><td><h4>Address </h4></td></tr>
+        <tr><td><%= @hospital.address %>&nbsp;&nbsp;<%= @hospital.city %></td></tr>
+        <tr><td><%= @hospital.state %>&nbsp;&nbsp;<%= @hospital.country %>&nbsp;&nbsp;<%= @hospital.zipcode %></td></tr>
+      </table>
+
+    </td>
+    <td class="right_column"">
+      <table border="1">
+        <tr><td height="100px"><b onclick="" style="display: inline">Click to Upload Photo</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_hospital_path(@hospital) %> |
+<%= link_to 'Back', hospitals_path %>

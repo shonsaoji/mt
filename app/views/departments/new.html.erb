@@ -1,0 +1,29 @@
+<% form_for(@department) do |f| %>
+<table>
+  <tr><td><h1>New department</h1></td></tr>
+  <tr><td><%= f.error_messages %></td></tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td><%= f.text_area :description, :rows => 10 %></td>
+          <%= f.hidden_field :hospital_id, :value => @hospital.id %>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+  <h2>TODO :: Here the name of the department should be prompted on keystroke.. AJAX</h2>
+
+<%= link_to 'Back', departments_path %>

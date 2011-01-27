@@ -1,0 +1,30 @@
+<table width=50>
+	<% form_for(@medical_procedure) do |f| %>
+	<tr>
+		<td><%= f.error_messages %></td>	
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td><%= f.text_area :description, :rows => 10 %></td>
+	</tr>
+	<tr>
+		<td>Department</td>
+		<% if @department.nil? %>
+			<td><%= select_tag :department_id, options_for_select(@hospital.departments.collect {|d| d.name})%></td>
+		<% else %>
+			<td><%= @department.name %></td>
+		<% end %>
+		
+	</tr>
+	<tr>
+    	<td><%= f.submit 'Create' %></td>
+	</tr>
+	<% end %>
+
+</table>
+
+<%= link_to 'Back', medical_procedures_path %>

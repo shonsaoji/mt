@@ -1,0 +1,61 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<h3 style="text-decoration: underline">Add Account</h3>
+<%= form_tag :action=> "create_new_account", :method => 'post' %>
+Account Name <%= text_field_tag 'account_name' %><br />
+
+<h3 style="text-decoration: underline">Add Admin Details</h3>
+<table class="form_table">
+  <tr>
+    <td>
+      Full Name 
+    </td>
+    <td>
+      <%= text_field_tag 'name' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Email 
+    </td>
+    <td>
+      <%= text_field_tag 'email' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      User Name 
+    </td>
+    <td>
+      <%= text_field_tag 'user_name' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Password 
+    </td>
+    <td>
+      <%= password_field_tag 'password' %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Confirm Password
+    </td>
+    <td>
+      <%= password_field_tag 'password_confirmation' %>
+    </td>
+
+  </tr>
+
+  
+
+
+
+</table>
+
+<br /><%= submit_tag 'Create' %>
+

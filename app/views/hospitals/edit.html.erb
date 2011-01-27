@@ -1,0 +1,12 @@
+<h1>Editing hospital</h1>
+
+<% form_for(@hospital) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @hospital %> |
+<%= link_to 'Back', hospitals_path %>
