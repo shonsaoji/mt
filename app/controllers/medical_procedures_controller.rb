@@ -3,7 +3,7 @@ class MedicalProceduresController < ApplicationController
   # GET /medical_procedures.xml
   def index
     @hospital = Hospital.find(params[:hospital_id])
-    @medical_procedures = @hospital.get_all_procedures 
+    @medical_procedures = @hospital.get_all_procedures
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class MedicalProceduresController < ApplicationController
   # GET /medical_procedures/new.xml
   def new
     @medical_procedure = MedicalProcedure.new
-    @hospital = Hospital.find(params[:hospital_id].to_i) if params[:hospital_id] 
+    @hospital = Hospital.find(params[:hospital_id].to_i) if params[:hospital_id]
     @department = Department.find(params[:department].to_i) if params[:department]
 
     respond_to do |format|
@@ -44,15 +44,18 @@ class MedicalProceduresController < ApplicationController
   # POST /medical_procedures.xml
   def create
     @medical_procedure = MedicalProcedure.new(params[:medical_procedure])
+    @department = Department.find(params[:department_id])
 
-    respond_to do |format|
-      if @medical_procedure.save
-        format.html { redirect_to(@medical_procedure, :notice => 'MedicalProcedure was successfully created.') }
-        format.xml  { render :xml => @medical_procedure, :status => :created, :location => @medical_procedure }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @medical_procedure.errors, :status => :unprocessable_entity }
-      end
+    if @medical_procedure.save
+      @department_medical_procedure = DepartmentsMedicalProcedure.new
+      @department_medical_procedure.medical_procedure_id = @medical_procedure.id
+      @department_medical_procedure.department_id = @department.id
+      @department.medical_procedures << @medical_procedure
+      redirect_to :action => "index", :hospital_id => @department.hospital.id
+      flash[:notice] = 'MedicalProcedure was successfully created.'
+
+    else
+      render :action => "new", :hospital_id => @department.hospital.id
     end
   end
 
@@ -83,11 +86,11 @@ class MedicalProceduresController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def department_procedures
     @department = Department.find(params[:department])
     @hospital = @department.hospital
-    @medical_procedures = @department.medical_procedures 
+    @medical_procedures = @department.medical_procedures
   end
 
 end

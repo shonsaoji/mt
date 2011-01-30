@@ -3,9 +3,9 @@ class DepartmentsController < ApplicationController
   # GET /departments.xml
   include DepartmentsHelper
   include ApplicationHelper
-  
+
   before_filter :check_if_logged_in?
-  
+
   def index
     @hospital = Hospital.find(params[:hospital_id])
     @departments = Department.find_all_by_hospital_id(@hospital.id, :order => :name)

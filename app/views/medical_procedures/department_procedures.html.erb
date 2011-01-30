@@ -28,19 +28,22 @@
           <td><%= link_to "Procedures", :action => "department_procedures", :controller => "medical_procedures", :department => @department.id %></td>
           <td><%= link_to "Facility" %></td>
           <td><%= link_to "Photos" %></td>
-          <td><%= link_to "Videos" %></td>		  
+          <td><%= link_to "Videos" %></td>
         </tr>
       </table>
       <table border=1>
       	<tr>
           <% if hospital_admin?(@hospital.id.to_i) %>
-          <td align="right"><%= button_to 'Add procedure', :action => "new", :controller => "medical_procedures", :department => @department.id  %></td>
+          <td align="right" colspan=2><%= button_to 'Add procedure', :action => "new", :controller => "medical_procedures", :department => @department.id  %></td>
           <%  end %>
       	</tr>
       	<% @medical_procedures.each do |procedure| %>
         <tr>
 	        <td><%= link_to "#{procedure.name}", procedure %></td>
-	        <td><%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+	        <td align="right">
+	        	<%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %> &nbsp; | &nbsp;
+				<%= link_to 'Edit', procedure, :method => :edit %>
+			</td>
 	    </tr>
 		<% end%>
       </table>

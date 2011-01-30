@@ -1,7 +1,7 @@
 <table width=50>
 	<% form_for(@medical_procedure) do |f| %>
 	<tr>
-		<td><%= f.error_messages %></td>	
+		<td><%= f.error_messages %></td>
 	</tr>
 	<tr>
 		<td>Name</td>
@@ -14,11 +14,14 @@
 	<tr>
 		<td>Department</td>
 		<% if @department.nil? %>
-			<td><%= select_tag :department_id, options_for_select(@hospital.departments.collect {|d| d.name})%></td>
+			<td><%= select_tag :department_id, options_for_select(@hospital.departments.collect {|d| [d.name, d.id]})%></td>
 		<% else %>
-			<td><%= @department.name %></td>
+			<td>
+				<%= @department.name %>
+				<%= hidden_field_tag "department_id", @department.id%>
+			</td>
 		<% end %>
-		
+
 	</tr>
 	<tr>
     	<td><%= f.submit 'Create' %></td>
