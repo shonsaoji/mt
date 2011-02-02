@@ -15023,3 +15023,942 @@ Rendering medical_procedures/index
   [4;36;1mUser Load (5.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
 Rendered users/_user_bar (1.0ms)
 Completed in 524ms (View: 228, DB: 162) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-01-29 23:04:19) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;36;1mHospital Columns (117.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (124.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (57.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;35;1mDepartment Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mMedicalProcedure Load (12.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;35;1mMedicalProcedure Load (2.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;36;1mMedicalProcedure Load (3.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;35;1mMedicalProcedure Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+
+ActionView::TemplateError (undefined method `admin' for nil:NilClass) on line #21 of app/views/medical_procedures/index.html.erb:
+18:       <table border="1">
+19:         <tr>
+20:           <td><h3>Listing Medical Procedures</h3></td>
+21:           <% if hospital_admin?(@hospital.id.to_i) %>
+22:           <td><p><%= link_to 'Add procedure', :action => "new", :controller => "medical_procedures", :hospital_id => @hospital.id  %></p></td>
+23:           <%  end %>
+24:         </tr>
+
+    app/helpers/application_helper.rb:4:in `user_has_hospital_admin_rights?'
+    app/helpers/departments_helper.rb:3:in `hospital_admin?'
+    app/views/medical_procedures/index.html.erb:21
+    app/controllers/medical_procedures_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (3.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (42.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-01-30 17:43:45) [GET]
+Rendering sessions/new
+Completed in 767ms (View: 763, DB: 42) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-01-30 17:43:47) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"6hMmLUSRNDWu3b4Kwh/9Z4O9iVYrqId8dcVA7ydLJUA=", "user_name"=>"super", "password"=>"monkey"}
+  [4;36;1mUser Columns (157.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (29.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`user_name` = 'super') LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/users/home/127
+Completed in 479ms (DB: 188) | 302 Found [http://localhost/sessions]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#home (for 127.0.0.1 at 2011-01-30 17:43:48) [GET]
+  Parameters: {"id"=>"127"}
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendering template within layouts/users
+Rendering users/home
+Rendered users/_user_bar (5.0ms)
+Completed in 146ms (View: 98, DB: 7) | 200 OK [http://localhost/users/home/127]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HospitalsController#index (for 127.0.0.1 at 2011-01-30 17:43:50) [GET]
+  [4;36;1mUser Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mAccount Load (37.0ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (account_type = 1) [0m
+  [4;35;1mAccount Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.account_id = 2) [0m
+  [4;35;1mHospital Load (77.0ms)[0m   [0mSELECT * FROM `hospitals` [0m
+  [4;36;1mHospital Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.account_id = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `hospitals` [0m
+Rendering template within layouts/hospitals
+Rendering hospitals/index
+Rendered users/_user_bar (1.0ms)
+Completed in 441ms (View: 166, DB: 139) | 200 OK [http://localhost/hospitals]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HospitalsController#show (for 127.0.0.1 at 2011-01-30 17:43:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mHospital Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (2.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/hospitals
+Rendering hospitals/show
+Rendered users/_user_bar (3.0ms)
+Completed in 118ms (View: 52, DB: 12) | 200 OK [http://localhost/hospitals/1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-01-30 17:43:55) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;35;1mHospital Columns (12.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (1.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (53.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mMedicalProcedure Load (118.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;36;1mMedicalProcedure Load (0.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;36;1mMedicalProcedure Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+  [4;35;1mUser Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 647ms (View: 243, DB: 212) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing DepartmentsController#index (for 127.0.0.1 at 2011-01-30 17:43:59) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;36;1mUser Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mHospital Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (0.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (199.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`hospital_id` = 1) ORDER BY name[0m
+Rendering template within layouts/departments
+Rendering departments/index
+Rendered users/_user_bar (1.0ms)
+Completed in 579ms (View: 300, DB: 224) | 200 OK [http://localhost/departments?hospital_id=1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing DepartmentsController#show (for 127.0.0.1 at 2011-01-30 17:44:01) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;35;1mDepartment Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (3.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (4.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (3.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/departments
+Rendering departments/show
+Rendered users/_user_bar (3.0ms)
+Completed in 167ms (View: 91, DB: 23) | 200 OK [http://localhost/departments/2]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-01-30 17:44:05) [GET]
+  Parameters: {"department"=>"2"}
+  [4;36;1mDepartment Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;36;1mUser Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 192ms (View: 99, DB: 36) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;36;1mSQL (9.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-01-30 17:44:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (3.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (4.0ms)
+Completed in 72ms (View: 42, DB: 24) | 200 OK [http://localhost/medical_procedures/1]
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-02-01 08:10:09) [GET]
+  Parameters: {"department"=>"2"}
+  [4;36;1mDepartment Columns (153.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (47.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;36;1mHospital Columns (108.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;36;1mUser Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (42.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mMedicalProcedure Load (152.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Columns (10.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 3389ms (View: 323, DB: 541) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:10:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Department without an ID):
+  app/controllers/medical_procedures_controller.rb:27:in `show'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (86.0ms)
+Rendered rescues/_request_and_response (17.0ms)
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-02-01 08:10:58) [GET]
+  Parameters: {"department"=>"2"}
+  [4;36;1mDepartment Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (3.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;36;1mUser Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (3.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mMedicalProcedure Load (0.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 311ms (View: 210, DB: 34) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-02-01 08:11:23) [GET]
+  Parameters: {"department"=>"2"}
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (5.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (5.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;35;1mUser Columns (10.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;36;1mMedicalProcedure Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 214ms (View: 115, DB: 49) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:11:29) [GET]
+  Parameters: {"id"=>"1", "department_id"=>"2"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mDepartment Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (5.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+
+ActionView::TemplateError (undefined method `name' for nil:NilClass) on line #3 of app/views/medical_procedures/show.html.erb:
+1: <table border="1" class="hospital_profile" id="hospital_profile">
+2:   <tr>
+3:     <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+4:   </tr>
+5:   <tr>
+6:     <td class="left_column">
+
+    app/views/medical_procedures/show.html.erb:3
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (206.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-02-01 08:11:53) [GET]
+  Parameters: {"department"=>"2"}
+  [4;35;1mDepartment Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (4.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (3.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;36;1mMedicalProcedure Columns (6.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 128ms (View: 65, DB: 33) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:11:55) [GET]
+  Parameters: {"id"=>"1", "department_id"=>"2"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mDepartment Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (4.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 169ms (View: 66, DB: 45) | 200 OK [http://localhost/medical_procedures/1?department_id=2]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:12:01) [GET]
+  Parameters: {"id"=>"1", "department_id"=>"2"}
+  [4;35;1mMedicalProcedure Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (2.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mDepartment Columns (4.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (3.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (4.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (2.0ms)
+Completed in 121ms (View: 48, DB: 34) | 200 OK [http://localhost/medical_procedures/1?department_id=2]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-02-01 08:12:04) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;36;1mHospital Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (8.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+  [4;36;1mUser Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (2.0ms)
+Completed in 238ms (View: 94, DB: 47) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-02-01 08:12:32) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;35;1mHospital Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (8.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;36;1mMedicalProcedure Columns (14.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+  [4;35;1mUser Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 232ms (View: 95, DB: 50) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:12:37) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (3.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+
+NoMethodError (undefined method `include?' for #<Department:0x716f3e8>):
+  app/controllers/medical_procedures_controller.rb:24:in `show'
+  app/controllers/medical_procedures_controller.rb:23:in `show'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (155.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-02-01 08:13:44) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (6.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;36;1mDepartment Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;36;1mMedicalProcedure Load (0.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;36;1mMedicalProcedure Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 217ms (View: 90, DB: 43) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:13:47) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (2.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 153ms (View: 46, DB: 37) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:14:25) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (5.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (2.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (0.0ms)
+Completed in 295ms (View: 80, DB: 43) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:15:00) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (3.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (4.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 143ms (View: 52, DB: 31) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:17:50) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (6.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+
+ActionView::TemplateError (undefined local variable or method `procedure' for #<ActionView::Base:0x7207ef0>) on line #31 of app/views/medical_procedures/show.html.erb:
+28:           <td>
+29:             <table border="1">
+30:               <tr>
+31:                 <td><%= link_to "#{@medical_procedure.description}", procedure %></td>
+32:                 <td><%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+33:               </tr>
+34:             </table>
+
+    app/views/medical_procedures/show.html.erb:31
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (97.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:18:02) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (3.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (2.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+
+ActionView::TemplateError (undefined local variable or method `procedure' for #<ActionView::Base:0x727d1a8>) on line #31 of app/views/medical_procedures/show.html.erb:
+28:           <td>
+29:             <table border="1">
+30:               <tr>
+31:                 <td><%= link_to "#{@medical_procedure.description}", procedure %></td>
+32:                 <td><%= link_to 'Delete', @medical_procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+33:               </tr>
+34:             </table>
+
+    app/views/medical_procedures/show.html.erb:31
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (239.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:18:25) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (10.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (4.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 231ms (View: 92, DB: 45) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:18:33) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (5.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (5.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (2.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (0.0ms)
+Completed in 219ms (View: 98, DB: 45) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:20:13) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (1.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #31 of app/views/medical_procedures/show.html.erb:
+28:           <td>
+29:             <table border="1">
+30: 	          <tr class ="internal_tabs">
+31: 	            <td><%= link_to "Home", :action => "show", :controller => "departments", :id =>@department.id %></td>
+32: 	            <td><%= link_to "Doctors" %></td>
+33: 	            <td><%= link_to "Procedures", :action => "department_procedures", :controller => "medical_procedures", :department => @department.id %></td>
+34: 	            <td><%= link_to "Facility" %></td>
+
+    app/views/medical_procedures/show.html.erb:31
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (71.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:20:34) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 223ms (View: 85, DB: 43) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:20:54) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (3.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (9.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 300ms (View: 72, DB: 50) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:20:59) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (5.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 133ms (View: 45, DB: 31) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:21:03) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (13.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (1.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (17.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (0.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 187ms (View: 48, DB: 46) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:22:15) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (3.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (14.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 220ms (View: 63, DB: 41) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:23:04) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;36;1mMedicalProcedure Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;35;1mMedicalProcedure Load (4.0ms)[0m   [0mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;36;1mHospital Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (4.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;35;1mDepartment Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 216ms (View: 86, DB: 49) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing DepartmentsController#index (for 127.0.0.1 at 2011-02-01 08:23:20) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;36;1mUser Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (3.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`hospital_id` = 1) ORDER BY name[0m
+Rendering template within layouts/departments
+Rendering departments/index
+Rendered users/_user_bar (2.0ms)
+Completed in 260ms (View: 133, DB: 34) | 200 OK [http://localhost/departments?hospital_id=1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing DepartmentsController#show (for 127.0.0.1 at 2011-02-01 08:23:22) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (4.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;35;1mDepartment Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (2.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/departments
+Rendering departments/show
+Rendered users/_user_bar (3.0ms)
+Completed in 223ms (View: 15, DB: 29) | 200 OK [http://localhost/departments/2]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#department_procedures (for 127.0.0.1 at 2011-02-01 08:23:24) [GET]
+  Parameters: {"department"=>"2"}
+  [4;36;1mDepartment Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (4.0ms)[0m   [0mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (3.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/department_procedures
+  [4;36;1mUser Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;35;1mMedicalProcedure Columns (5.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendered users/_user_bar (0.0ms)
+Completed in 186ms (View: 94, DB: 37) | 200 OK [http://localhost/department_procedures?department=2]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:23:25) [GET]
+  Parameters: {"id"=>"1", "department_id"=>"2"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (4.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mDepartment Load (5.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.`id` = 2) [0m
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (6.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;35;1mUser Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 186ms (View: 77, DB: 48) | 200 OK [http://localhost/medical_procedures/1?department_id=2]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#index (for 127.0.0.1 at 2011-02-01 08:23:28) [GET]
+  Parameters: {"hospital_id"=>"1"}
+  [4;36;1mHospital Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `hospitals`[0m
+  [4;35;1mHospital Load (2.0ms)[0m   [0mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM `departments` WHERE (`departments`.hospital_id = 1) [0m
+  [4;35;1mDepartment Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `departments`[0m
+  [4;36;1mMedicalProcedure Load (3.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 1)) [0m
+  [4;35;1mMedicalProcedure Load (0.0ms)[0m   [0mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 2)) [0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT `medical_procedures`.* FROM `medical_procedures` INNER JOIN `departments_medical_procedures` ON `medical_procedures`.id = `departments_medical_procedures`.medical_procedure_id WHERE ((`departments_medical_procedures`.department_id = 3)) [0m
+  [4;35;1mMedicalProcedure Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/index
+  [4;36;1mUser Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (0.0ms)
+Completed in 180ms (View: 52, DB: 38) | 200 OK [http://localhost/medical_procedures?hospital_id=1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:23:30) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (3.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (3.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 213ms (View: 77, DB: 50) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:24:25) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (3.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (3.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (3.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (2.0ms)
+Completed in 212ms (View: 85, DB: 42) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:24:35) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (5.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (9.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (4.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (8.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (3.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (2.0ms)
+Completed in 220ms (View: 85, DB: 45) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:25:46) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (5.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (5.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (6.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (9.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 200ms (View: 82, DB: 42) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:26:01) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (14.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (1.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (3.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (3.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 172ms (View: 50, DB: 44) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MedicalProceduresController#show (for 127.0.0.1 at 2011-02-01 08:27:01) [GET]
+  Parameters: {"hospital_id"=>"1", "id"=>"1"}
+  [4;35;1mMedicalProcedure Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `medical_procedures`[0m
+  [4;36;1mMedicalProcedure Load (5.0ms)[0m   [0;1mSELECT * FROM `medical_procedures` WHERE (`medical_procedures`.`id` = 1) [0m
+  [4;35;1mHospital Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `hospitals`[0m
+  [4;36;1mHospital Load (4.0ms)[0m   [0;1mSELECT * FROM `hospitals` WHERE (`hospitals`.`id` = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT `departments`.* FROM `departments` INNER JOIN `departments_medical_procedures` ON `departments`.id = `departments_medical_procedures`.department_id WHERE ((`departments_medical_procedures`.medical_procedure_id = 1)) [0m
+  [4;36;1mDepartment Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `departments`[0m
+  [4;35;1mDepartment Load (2.0ms)[0m   [0mSELECT `departments`.id FROM `departments` WHERE (`departments`.`id` = 2) AND (`departments`.hospital_id = 1) LIMIT 1[0m
+Rendering template within layouts/medical_procedures
+Rendering medical_procedures/show
+  [4;36;1mUser Columns (13.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 127) LIMIT 1[0m
+Rendered users/_user_bar (1.0ms)
+Completed in 294ms (View: 176, DB: 48) | 200 OK [http://localhost/medical_procedures/1?hospital_id=1]

@@ -1,3 +1,54 @@
+<table border="1" class="hospital_profile" id="hospital_profile">
+  <tr>
+    <td colspan="3"><h2><%= @hospital.name %></h2> </td>
+  </tr>
+  <tr>
+    <td class="left_column">
+      <table border="1">
+        <tr><td><%= link_to "Home", :action => "show", :controller => "hospitals", :id => @hospital.id %></td></tr>
+        <tr><td><a href="#">Doctors</a></td></tr>
+        <tr><td><%= link_to "Departments" , :action => 'index', :controller => 'departments', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><%= link_to "Procedures" , :action => 'index', :controller => 'medical_procedures', :hospital_id => @hospital.id%></td></tr>
+        <tr><td><a href="#">Photos</a></td></tr>
+        <tr><td><a href="#">Videos</a></td></tr>
+        <tr><td><a href="#">Reviews</a></td></tr>
+      </table>
+    </td>
+    <td >
+      <table border="1">
+        <tr>
+          <td><h3><%=@medical_procedure.name%></h3></td>
+		  <% if hospital_admin?(@hospital.id.to_i) %>
+          <td><p><%= link_to 'Edit', edit_medical_procedure_path(@medical_procedure) %></p></td>
+          <%  end %>
+        </tr>
+      </table>
+	  <table border="1">
+	    <tr class ="internal_tabs">
+	      <td><%= link_to "Doctors" %></td>   <%# Should show doctors performing laser eye surgeries %>
+	      <td><%= link_to "Facility" %></td>  <%# Should show department photos	 %>
+	      <td><%= link_to "Photos" %></td>
+	      <td><%= link_to "Videos" %></td>
+	    </tr>
+	  </table>
+      <table>
+        <tr>
+          <td><%= @medical_procedure.description %></td>                
+        </tr>
+		<tr>
+          <td><h4>Contact Information</h4></td>                
+        </tr>
+		<tr>
+          <td></td>                
+        </tr>
 
-<%= link_to 'Edit', edit_medical_procedure_path(@medical_procedure) %> |
-<%= link_to 'Back', medical_procedures_path %>
+      </table>
+    </td>
+    <td class="right_column"">
+      <table border="1">
+        <tr><td height="100px"><b onclick="" style="display: inline">Procedure Reviews</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+

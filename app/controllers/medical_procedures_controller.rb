@@ -15,11 +15,19 @@ class MedicalProceduresController < ApplicationController
   # GET /medical_procedures/1.xml
   def show
     @medical_procedure = MedicalProcedure.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @medical_procedure }
+    
+    if params[:hospital_id]
+      @hospital = Hospital.find(params[:hospital_id]) 
+      h_departments = @hospital.departments
+      p_departments = @medical_procedure.departments
+      p_departments.each do |procedure_dept|
+        @deparment = h_departments.include?(procedure_dept)  
+      end
+    else
+      @department = Department.find(params[:department_id])
+      @hospital = @department.hospital 
     end
+    
   end
 
   # GET /medical_procedures/new
