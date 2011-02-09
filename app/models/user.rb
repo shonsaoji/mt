@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
   
   belongs_to :account
-
+  has_many :med_posts
+  has_many :med_replies
   # Roles
   SUPER = 1
   ACCOUNT_ADMIN = 2

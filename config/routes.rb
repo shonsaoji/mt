@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :med_post_categories
+
+  map.resources :med_replies
+
+  map.resources :med_posts
+
   map.resources :departments
 
   map.connect 'department_procedures', :controller => "medical_procedures", :action => "department_procedures"  
@@ -12,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
-#  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users
 
   map.resource :sessions

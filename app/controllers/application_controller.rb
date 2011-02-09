@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
+  
+  protected
   def verify_super_user
     unless current_user.admin == 1
       redirect_to :back

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101218144002) do
+ActiveRecord::Schema.define(:version => 20110206173312) do
 
   create_table "account_admins", :force => true do |t|
     t.datetime "created_at"
@@ -103,6 +103,33 @@ ActiveRecord::Schema.define(:version => 20101218144002) do
   add_index "hospitals", ["state"], :name => "index_hospitals_on_state"
   add_index "hospitals", ["user_id"], :name => "index_hospitals_on_user_id"
   add_index "hospitals", ["zipcode"], :name => "index_hospitals_on_zipcode"
+
+  create_table "med_post_categories", :force => true do |t|
+    t.string   "title"
+    t.integer  "plus_ratings"
+    t.integer  "total_ratings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "med_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "content"
+    t.integer  "med_post_category_id"
+    t.integer  "plus_ratings"
+    t.integer  "total_ratings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "med_replies", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "med_post_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "medical_procedures", :force => true do |t|
     t.datetime "created_at"

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
- before_filter :check_if_logged_in?
- before_filter :verify_super_user, :only => [:create, :new, :home]
+ #before_filter :check_if_logged_in?
+ #before_filter :verify_super_user, :only => [:create, :new, :home]
   
   def home
   end
