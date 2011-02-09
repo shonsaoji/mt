@@ -32,7 +32,7 @@
               <%  else %>
                 <% @medical_procedures.each do |procedure| %>
                   <tr>
-                    <td><%= link_to "#{procedure.name}", procedure %></td>
+                    <td><%= link_to "#{procedure.name}", :action => "show", :id => procedure.id, :hospital_id => @hospital.id  %></td>
                     <td><%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
                 <% end %>

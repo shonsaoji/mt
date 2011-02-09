@@ -39,7 +39,7 @@
       	</tr>
       	<% @medical_procedures.each do |procedure| %>
         <tr>
-	        <td><%= link_to "#{procedure.name}", procedure %></td>
+	        <td><%= link_to "#{procedure.name}", :action => "show", :id => procedure.id, :department_id => @department.id %></td>
 	        <td align="right">
 	        	<%= link_to 'Delete', procedure, :confirm => 'Are you sure?', :method => :delete %> &nbsp; | &nbsp;
 				<%= link_to 'Edit', procedure, :method => :edit %>
