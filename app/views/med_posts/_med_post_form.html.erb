@@ -1,0 +1,21 @@
+<% form_for(@med_post) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label "Specify a title" %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label "Add a description" %><br />
+    <%= f.text_area :content, :size => "60x10" %>
+  </p>
+  <p>
+    <%= f.label "Select a category" %><br />
+    <%= f.select :med_post_category_id,
+				            MedPostCategory.find(:all).collect {|c| [c.title, c.id] },
+			              {:include_blank => false}, :style => "width=10%"
+	     %>
+	</p>
+  <p>
+    <%= f.submit button_caption%>
+  </p>
+<% end %>

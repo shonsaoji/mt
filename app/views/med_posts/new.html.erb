@@ -1,0 +1,9 @@
+<div id="div_top" height="10%">
+  <br>
+	<h1>Add new post</h1>
+	<br>
+	<br>
+</div>
+<%= link_to 'Back', :action => "index" %>
+<br></br>
+<%= render :partial => "med_post_form",  :locals => {:button_caption => "Create"} %>

@@ -1,0 +1,192 @@
+body { background-color: #fff; color: #333; }
+
+#div_top {
+  background-color: #ddddFF;
+}
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.blog_title {
+  text-align: left;
+  font-weight: bold;
+  padding: 0px 0px 0px 0px;
+  font-size: 20px;
+  margin: 0px;
+  color: #303030;
+	background-color: #aaaaaa;
+	height:30px;
+}
+
+.blog_category {
+  text-align: left;
+  font-weight: bold;
+  padding: 0px 0px 0px 0px;
+  font-size: 12px;
+  margin:-10px;
+  background-color: #aaaaaa;
+  color: #303030;
+	height:10px;
+}
+
+.blog_created {
+  text-align: right;
+  font-weight: bold;
+  padding: 0px 0px 0px 0px;
+  font-size: 12px;
+  margin:-10px;
+  background-color: #aaaaaa;
+  color: #303030;
+	height:10px;
+}
+
+.blog_comment {
+  text-align: left;
+  font-weight: normal;
+  padding: 0px 0px 0px 0px;
+  font-size: 12px;
+  margin:0px;
+  background-color: #FFFFFF;
+  color: #000000;
+	height:10px;
+}
+
+.blog_user_image {
+	max-height:10px;
+	background-color: #aaaaaa;
+	width: 50px;
+	height: 50px;
+}
+
+.blog_content {
+	text-align: left;
+	vertical-align: top;
+}
+.blog_post_table {
+  padding: 0px 0px 0px 0px;
+	margin: 0px;
+	border:1px;
+	border-collapse:collapse;
+}
+
+
+
+
+.reply_title {
+  text-align: left;
+  font-weight: normal;
+  padding: 0px 0px 0px 0px;
+  font-size: 12px;
+  margin: 0px;
+  color: #303030;
+	background-color: #aaaaaa;
+	height:30px;
+}
+
+.reply_category {
+  text-align: left;
+  font-weight: normal;
+  padding: 0px 0px 0px 0px;
+  font-size: 10px;
+  margin:-10px;
+  background-color: #aaaaaa;
+  color: #303030;
+	height:10px;
+}
+
+.reply_created {
+  text-align: right;
+  font-weight: bold;
+  padding: 0px 0px 0px 0px;
+  font-size: 10px;
+  margin:-10px;
+  background-color: #aaaaaa;
+  color: #303030;
+	height:10px;
+}
+
+.reply_comment {
+  text-align: left;
+	vertical-align: top;
+  font-weight: normal;
+  padding: 0px 0px 0px 0px;
+  font-size: 10px;
+  margin:0px;
+  color: #000000;
+	height:10px;
+}
+
+.reply_user_image {
+	max-height:10px;
+	background-color: #aaaaaa;
+}
+
+.reply_content {
+	text-align: left;
+	vertical-align: top;
+}
+
+.reply_post_table {
+  padding: 0px 0px 0px 20px;
+	margin: 0px;
+	border:1px;
+	border-collapse:collapse;
+}
+
+.reply_links {
+	text-align: left;
+font-weight: normal;
+  padding: 0px 0px 0px 0px;
+  font-size: 10px;
+  margin:0px;
+  color: #000000;
+	height:10px;
+}

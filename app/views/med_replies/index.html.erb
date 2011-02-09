@@ -1,0 +1,24 @@
+<h1>Listing med_replies</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Med post</th>
+    <th>Content</th>
+  </tr>
+
+<% @med_replies.each do |med_reply| %>
+  <tr>
+    <td><%=h med_reply.user_id %></td>
+    <td><%=h med_reply.med_post_id %></td>
+    <td><%=h med_reply.content %></td>
+    <td><%= link_to 'Show', med_reply %></td>
+    <td><%= link_to 'Edit', edit_med_reply_path(med_reply) %></td>
+    <td><%= link_to 'Destroy', med_reply, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New med_reply', new_med_reply_path %>

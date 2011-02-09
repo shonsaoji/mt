@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @med_reply.user_id %>
+</p>
+
+<p>
+  <b>Med post:</b>
+  <%=h @med_reply.med_post_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @med_reply.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_med_reply_path(@med_reply) %> |
+<%= link_to 'Back', med_replies_path %>

@@ -1,0 +1,13 @@
+	<% form_for(@med_reply) do |f| %>
+
+	<%= f.error_messages %>
+    <%= f.hidden_field :user_id, :type => "hidden" %>
+    <%= f.hidden_field :med_post_id, :type => "hidden" %>
+  <p>
+    <%= f.label "Type in your comment below and click 'Create'." %><br />
+    <%= f.text_area :content, :size => "60x10" %>
+  </p>
+  <p>
+    <%= f.submit button_caption.capitalize %>
+  </p>
+	<% end %>

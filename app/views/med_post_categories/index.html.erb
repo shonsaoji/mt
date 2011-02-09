@@ -1,0 +1,20 @@
+<h1>Listing med_post_categories</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @med_post_categories.each do |med_post_category| %>
+  <tr>
+    <td><%=h med_post_category.title %></td>
+    <td><%= link_to 'Show', med_post_category %></td>
+    <td><%= link_to 'Edit', edit_med_post_category_path(med_post_category) %></td>
+    <td><%= link_to 'Destroy', med_post_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New med_post_category', new_med_post_category_path %>

@@ -1,0 +1,42 @@
+<div id="div_top">
+  <br>
+	<h1>Medical Blogs</h1>
+	<h3>Forum for users to interact</h3>
+  <br>
+</div>
+
+<div id="div_body">
+	<% form_for(:search_for, :url => {:action=>"search"}) do |f| %>
+	<table width="100%" border="0">
+		<tr>
+			<td width="5%">
+       <%= f.label "Category" %>
+			</td>
+			<td width="20%">
+  		 <%= f.select :category,
+				            MedPostCategory.find(:all).collect {|c| [c.title, c.id] },
+			              {:include_blank => false}, :style => "width=100%"
+	     %>
+			</td>
+			<td width="5%"><%= f.label "Keywords" %></td>
+			<td width="25%"><%= f.text_field :keywords, :maxlength => 30 %></td>
+			<td width="40%"> &nbsp; </td>
+		</tr>
+		<tr>
+			<td> &nbsp; </td>
+			<td> &nbsp; </td>
+			<td> &nbsp; </td>
+			<td> &nbsp; </td>
+			<td> &nbsp; </td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= f.submit "        Search        " %></td>
+    	<% end %>
+			<% form_for(:search_for, :url => {:action=>"new"}) do |f| %>
+				<td><%= f.submit "Add a new post" %></td>
+			<% end %>
+			<td> &nbsp; </td>
+			<td> &nbsp; </td>
+	  </tr>
+	</table>
+</div>

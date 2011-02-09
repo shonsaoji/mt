@@ -1,0 +1,15 @@
+<div id="div_top">
+  <br>
+	<h1>Post</h1>
+	<br>
+	<br>
+</div>
+<%= link_to 'Back', :action => "search", :id => 0 %>
+<br> <br>
+<table class="blog_post_table" width="100%">
+    <%= render :partial => "med_post", :locals => {:top => false}%>
+</table>
+<br>
+<table class="reply_post_table" width="100%">
+    <%= render :partial => "med_reply", :collection => @med_post.med_replies%>
+</table>

@@ -1,0 +1,13 @@
+<div id="div_top" height="10%">
+  <br>
+	<h1 text-align: center>Search Results</h1>
+	<br>
+	<br>
+</div>
+<%= link_to 'Back', :action => "index" %>
+<br></br>
+<div id="div_body" height="90%">
+	<table class="blog_post_table" width="100%">
+    <%= render :partial => "med_post", :collection => @med_posts, :locals => {:top => true} %>
+	</table>
+</div>

@@ -1,0 +1,39 @@
+		<% bgcolor = cycle("eeeeee","dddddd") %>
+    <tr>
+			<td width="4%"></td>
+			<td width="5%" rowspan="3" class="reply_user_image"> <%= image_tag('user-icon.png', :width=>50)%> </td>
+			<td width="91%" class="reply_created"> Created: <%=  med_reply.created_at.strftime "%a %d %b %Y" %></td>
+		</tr>
+
+		<tr>
+			<td width="4%"></td>
+			<td rowspan="2" class="reply_comment" bgcolor="#<%=bgcolor%>">
+				<%= med_reply.content %>
+			</td>
+		</tr>
+		<tr></tr>
+		<tr>
+			<td width="4%"></td>
+			<td width="5%" align="center" bgcolor="#<%=bgcolor%>"><%=  med_reply.user.user_name %></td>
+			<td colspan="1" bgcolor="#aaaaaa" width="91%">
+		    <table class="reply_post_table" width="100%" bgcolor="#<%=bgcolor%>">
+					<tr>
+						<% if (current_user.id ==  med_reply.user_id)%>
+						<td width="10%" bgcolor="#<%= bgcolor %>" class="reply_links">
+							<%= link_to "Edit", :controller => "med_replies", :action => "edit", :id => med_reply.id%>
+						</td>
+						<td width="55%" bgcolor="#<%= bgcolor %>" class="reply_links">
+					      <%= link_to "Delete", :controller => "med_replies", :action => "delete", :id => med_reply.id%>
+					  </td>
+						<%else%>
+						<td width="35%" bgcolor="#<%= bgcolor %>">
+					  </td>
+						<td width="30%" bgcolor="#<%= bgcolor %>">
+					  </td>
+						<%end%>
+						<td width="30%" bgcolor="#<%= bgcolor %>">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>

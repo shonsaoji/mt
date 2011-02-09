@@ -1,0 +1,9 @@
+<div id="div_top" height="10%">
+  <br>
+	<h1>Edit comment</h1>
+	<br>
+	<br>
+</div>
+<%= link_to 'Back', :controller => "med_posts", :action => "show", :id => @med_reply.med_post_id %>
+<br></br>
+<%= render :partial => "form_reply", :locals => {:button_caption => "update"} %>

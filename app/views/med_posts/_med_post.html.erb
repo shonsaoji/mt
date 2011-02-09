@@ -1,0 +1,47 @@
+		<% bgcolor = cycle("eeeeee","dddddd") %>
+    <tr>
+			<td width="5%" rowspan="3" class="blog_user_image"> <%= image_tag('user-icon.png', :width => 50) %> </td>
+			<td width="95%" colspan="2" class="blog_title">  <%= med_post.title %>  </td>
+		</tr>
+
+		<tr>
+			<td width="47.5%" class="blog_category"> Category: <%=  med_post.med_post_category.title %></td>
+			<td width="47.5%" class="blog_created"> Created: <%=  med_post.created_at.strftime "%a %d %b %Y" %></td>
+		</tr>
+
+		<tr>
+			<td colspan="2"  class="blog_content" bgcolor="#<%=bgcolor%>">
+				<%= med_post.content %>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" bgcolor="#aaaaaa">
+		    <table class="blog_post_table" width="100%" bgcolor="#<%=bgcolor%>">
+					<tr>
+						<td align="center" width="5%">
+							<%=  med_post.user.user_name %>
+						</td>
+						<% if top %>
+							<td width="30%" bgcolor="#<%= bgcolor %>">
+								<%= link_to "View/Add comments for this post", :action => "show", :id => med_post.id%>
+							</td>
+							<% if (current_user.id == med_post.user_id) %>
+								<td width="65%" bgcolor="#<%= bgcolor %>">
+									<%= link_to "Edit this post", :action => "edit", :id => med_post.id%>
+								</td>
+							<% else %>
+								<td width="65%" bgcolor="#<%= bgcolor %>">
+								</td>
+							<%  end %>
+						<%else%>
+							<td width="30%" bgcolor="#<%= bgcolor %>">
+									<%= link_to "Add comment", :controller => "med_replies", :action => "new",:id => med_post.id %>
+							</td>
+							<td width="60%" bgcolor="#<%= bgcolor %>">
+							</td>
+						<%end%>
+					</tr>
+				</table>
+			</td>
+		</tr>
